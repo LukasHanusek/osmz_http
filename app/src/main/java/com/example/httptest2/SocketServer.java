@@ -21,6 +21,7 @@ public class SocketServer extends Thread {
     }
 
     public void setMax(int max) {
+        Log.d("semaphore", "new limit is " + max);
         this.semaphore.release(this.semaphore.getQueueLength());
         this.semaphore = new Semaphore(max);
     }
@@ -32,8 +33,11 @@ public class SocketServer extends Thread {
             bRunning = true;
             while (bRunning) {
                 Socket s = serverSocket.accept();
+                Log.d("SERVER", "waiting for semaphore");
+
                 semaphore.acquire();
-                ClientThread ct = new ClientThread(s);
+                Log.d("SERVER", "starting thread");
+                ClientThread ct = new ClientThread(s, semaphore);
                 ct.start();
             }
         } catch (IOException | InterruptedException e) {
