@@ -5,7 +5,7 @@ URL:
   
 / - index.html  
 /index.html - index.html  
-//waterfall.jpg - waterfall.jpg obrázek  
+/waterfall.jpg - waterfall.jpg obrázek  
 /cgi-bin/cat /proc/cpuinfo - provedení pøíkazu  
 /camera/snapshot - poslední snapshot z kamery  
 /camera/stream - motion jpeg stream  
